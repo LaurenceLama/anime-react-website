@@ -18,7 +18,7 @@ GENERICS
   min-height: 100vh;
   background-size: 2000px;
   background-image: url(../assets/maybe_background.png);
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 }
 
 a {
@@ -48,12 +48,13 @@ li {
 }
 
 h1 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .transition {
-  transition: all 360ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
+
 
 /* 
 
@@ -93,18 +94,18 @@ nav {
 
 input,
 .search__btn {
-    background-color: transparent;
-    color: white;
-    border: none;
-    font-size: 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
 }
 
 .search-bar--input {
-    width: 100%;
-    margin-right: 200px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  margin-right: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 input {
@@ -115,10 +116,10 @@ input {
 }
 
 .search__btn {
-    width: 50px;
-    position: absolute;
-    right: 0;
-    padding-right: 20px;
+  width: 50px;
+  position: absolute;
+  right: 0;
+  padding-right: 20px;
 }
 
 ::placeholder {
