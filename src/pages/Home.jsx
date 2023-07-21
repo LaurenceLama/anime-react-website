@@ -24,12 +24,18 @@ function Home() {
       <section id="background">
         <main id="nav__bar" className="transition">
           <nav>
-            <a href="/" className="nav__logo--wrapper">
+            <button
+              className="nav__logo--wrapper"
+              onClick={() => navigate("/")}
+            >
               <img src={images} alt="fan" id="nav__logo" />
               <h1>Akneemei</h1>
-            </a>
+            </button>
             <div className="header__search-bar--wrapper">
-              <form className="search-bar--input transition" onSubmit={handleSubmit}>
+              <form
+                className="search-bar--input transition"
+                onSubmit={handleSubmit}
+              >
                 <input
                   type="text"
                   value={query}

@@ -1,24 +1,41 @@
 import "../styles/list.css";
 import images from "../assets/images.jpg";
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function List() {
+  const navigate = useNavigate();
+  const [animes, setAnimes] = useState([]);
+
+  async function fetchAnime() {
+    // setLoading(true);
+    const { data } = await axios.get("https://api.jikan.moe/v4/anime");
+    // console.log(data.data);
+    setAnimes(data.data);
+    // setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchAnime();
+  }, []);
+
   return (
-    <div className="list__landing-page">
+    <div className="gray__landing-page">
       <section id="nav__bar">
         <nav className="list__nav">
-          <a href="/index.html" class="nav__logo--anchor">
+          <button onClick={() => navigate("/")} className="nav__logo--anchor">
             <img src={images} alt="" id="nav__logo" />
             <h1 className="nav__title">Akneemei</h1>
-          </a>
-          <div class="header__search-bar--wrapper">
-            <form class="search-bar--input">
+          </button>
+          <div className="header__search-bar--wrapper">
+            <form className="search-bar--input">
               <input
                 type="text"
                 placeholder="Search to your desires, have fun bingin!"
-                class="transition"
+                className="transition"
               />
-              <button class="search__btn">
+              <button className="search__btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -39,24 +56,46 @@ function List() {
         </nav>
       </section>
       <section id="sort__results">
-        <div class="row">
-          <div class="sort__result--banner">
-            <div class="result__title--wrapper">
-              <h2 class="search__result--title">Anime List:</h2>
-              <div class="sort__filter--wrapper">
-                <h2 class="sort__result--title">Sort Anime:</h2>
+        <div className="row">
+          <div className="sort__result--banner">
+            <div className="result__title--wrapper">
+              <h2 className="search__result--title">Anime List:</h2>
+              <div className="sort__filter--wrapper">
+                <h2 className="sort__result--title">Sort Anime:</h2>
                 <select
                   id="sort"
-                  class="transition"
-                  onchange="sortAnime(event)"
+                  className="transition"
+                  defaultValue={"sort"}
+                  // onChange="sortAnime(event)"
                 >
-                  <option value="" disabled selected>
+                  <option value="sort" disabled>
                     sort
                   </option>
                   <option value="alphabetical">Low to high scores</option>
                   <option value="non-alphabetical">Most episodes</option>
                   <option value="Rank">Ranking</option>
                 </select>
+              </div>
+            </div>
+          </div>
+          <div className="search__result--banner">
+            <div className="container">
+              <div className="wrapper">
+                {animes.map(anime => (
+                  <button className="another-wrapper" key={anime.rank} onClick={() => navigate(`/animelist/${anime.mal_id}`)}>
+                    <div className="content__img--wrapper transition">
+                      <img
+                        src={anime.images.jpg.image_url}
+                        alt="rawr"
+                        className="content__img"
+                      />
+                      <div className="content">
+                        <h2 className="content__title transition">{anime.title}</h2>
+                        <div className="content__ranking">Rank: {anime.rank}</div>
+                      </div>
+                    </div>
+                  </button>
+                ))}
               </div>
             </div>
           </div>

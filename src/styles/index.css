@@ -13,6 +13,10 @@ GENERICS
 
 */
 
+h4 {
+  color: black;
+}
+
 #background {
   width: 100%;
   min-height: 100vh;
@@ -28,6 +32,7 @@ a {
 
 button {
   text-decoration: none;
+  background-color: transparent;
   border: none;
 }
 

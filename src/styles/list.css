@@ -15,7 +15,7 @@ GENERICS
 
 */
 
-.list__landing-page {
+.gray__landing-page {
   background-color: #242424;
   min-height: 100vh;
 }
@@ -67,7 +67,7 @@ h1 {
 }
 
 .transition {
-  transition: all 360ms ease-in-out;
+  transition: all 250ms ease-in-out;
 }
 
 /* 
@@ -258,9 +258,11 @@ Animes, the main attraction, this it
 
 .content__ranking {
   position: absolute;
+  padding: 4px;  
   left: 0;
   top: 0;
-  font-size: 24px;
+  background-color: #242424;
+  font-size: 32px;
   font-weight: 600;
   color: rgb(140, 188, 252);
 }
