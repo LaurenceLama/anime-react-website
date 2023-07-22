@@ -6,7 +6,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Kulim Park", sans-serif;
-  color: white;
 }
 
 /*
@@ -16,14 +15,9 @@ GENERICS
 */
 
 .gray__landing-page {
-  background-color: #242424;
-  min-height: 100vh;
+ min-height: 100vh;
 }
 
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
 
 .nav__title {
   color: rgb(99, 150, 218);
@@ -166,7 +160,7 @@ Animes, the main attraction, this it
 
 .sort__result--banner {
   width: 100%;
-  padding: 88px 0;
+  padding: 72px 0;
 }
 
 .container {
@@ -227,11 +221,13 @@ Animes, the main attraction, this it
   transform: scale(1.05);
 }
 
-.content__img {
+.content__img,
+.content__img--skeleton {
   max-width: 340px;
   max-height: 480px;
   min-height: 480px;
 }
+
 
 .content__title {
   font-size: 28px;
@@ -244,7 +240,9 @@ Animes, the main attraction, this it
   position: relative;
   width: 100%;
   max-width: 340px;
-  margin-bottom: 32px;
+  max-height: 524px;
+  margin-bottom: 64px;
+  cursor: pointer;
 }
 
 .content__img--wrapper:hover {
@@ -254,6 +252,7 @@ Animes, the main attraction, this it
 
 .content__img--wrapper:hover .content__title {
   color: rgb(140, 188, 252);
+  background-color: rgba(0, 0, 0, 0.759);
 }
 
 .content__ranking {
@@ -268,42 +267,33 @@ Animes, the main attraction, this it
 }
 
 
+
 /*
 
-Loadings screeners
+Skeleton Loadings 
 
 */
 
-.books {
+.content__img--skeleton {
+  background-color: rgb(0, 0, 0);
+}
+
+.content__title--skeleton,
+.content__ranking--skeleton {
+  background-color: rgba(140, 189, 252, 0.326);
+}
+
+.content__title--skeleton {
+  padding: 20px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.content__ranking--skeleton {
   position: absolute;
-  left: 49%;
-}
-
-.books__loading {
-  font-size: 60px;
-  color: white;
-}
-
-.books__loading--spinner {
-  display: none;
-}
-
-.books__loading .books__loading--spinner {
-  display: block !important;
-}
-
-.fa-spinner {
-  animation: rotate 600ms infinite linear;
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+  padding: 32px 60px;  
+  left: 0;
+  top: 0;
 }
 
 /*

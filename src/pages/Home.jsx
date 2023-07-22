@@ -1,6 +1,6 @@
 import "../styles/index.css";
 import images from "../assets/images.jpg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFan } from "@fortawesome/free-solid-svg-icons";
@@ -31,15 +31,6 @@ function Home() {
       }, 2000);
     }
   };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (navigate('/animelist' === true)) (
-  //       setLoading(true)
-  //     )})
-
-  //   }, 2000)
-  // console.log(loading == true)
 
   return (
     <>

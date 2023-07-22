@@ -10,12 +10,10 @@ function Post() {
   const [posts, setPosts] = useState([]);
 
   async function fetchPost() {
-    // setLoading(true);
     const { data } = await axios.get(`https://api.jikan.moe/v4/anime/${id}`);
-    // console.log(data.data);
     setPosts(data.data);
-    // setLoading(false);
   }
+  // setLoading(false);
 
   useEffect(() => {
     fetchPost();
