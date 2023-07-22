@@ -24,6 +24,12 @@ function Home() {
         navigate("/animelist");
       }, 2000);
     }
+    else {
+      setLoading(true)
+      setTimeout(() => {
+        navigate("/error");
+      }, 2000);
+    }
   };
 
   // useEffect(() => {

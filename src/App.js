@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import List from "./pages/List";
 import Post from "./pages/Post";
+import Error from "./pages/Error";
 
 function App() {
   // <!-- chosen anime API (reused from js project): https://docs.api.jikan.moe/ -->
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home exact />} />
+          <Route path="/error" element={<Error />} />
           <Route path="/animelist" element={<List />} />
           <Route path="/animelist/:id" element={<Post />} />
         </Routes>
