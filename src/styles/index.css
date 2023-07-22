@@ -22,7 +22,7 @@ h4 {
   min-height: 100vh;
   background-size: 2000px;
   background-image: url(../assets/maybe_background.png);
-  /* background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
 
 a {

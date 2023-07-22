@@ -1,5 +1,6 @@
 import axios from "axios";
 import "../styles/post.css";
+import images from "../assets/images.jpg";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -28,7 +29,7 @@ function Post() {
       <section id="nav__bar">
         <nav>
           <button onClick={() => navigate("/")} className="nav__logo--anchor">
-            <img src="/some things/images.jpg" alt="" id="nav__logo" />
+            <img src={images} alt="" id="nav__logo" />
             <h1 className="nav__title">Akneemei</h1>
           </button>
           <div className="post__back transition">
