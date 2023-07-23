@@ -16,6 +16,7 @@ function Home() {
     setQuery(event.target.value);
   };
 
+  // Routing via search
   const handleSubmit = (event) => {
     event.preventDefault();
     if (query.toLowerCase() === "anime") {

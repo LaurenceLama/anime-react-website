@@ -3,20 +3,15 @@ import images from "../assets/images.jpg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { type } from "@testing-library/user-event/dist/type";
 
 function List() {
   const navigate = useNavigate();
   const [animes, setAnimes] = useState([]);
   const [loading, setLoading] = useState();
-  const [sort, setSort] = useState("");
+  const [query, setQuery] = useState("");
+  const [filteredAnimeList, setFilteredAnimeList] = useState([]);
+  const [isEmpty, setIsEmpty] = useState(true);
 
-  
-    const handleSortChange = (event) => {
-      const selectedOption = event.target.value;
-      setSort(selectedOption);
-    };
-    
   async function fetchAnime() {
     setLoading(true);
     const { data } = await axios.get("https://api.jikan.moe/v4/anime");
@@ -25,32 +20,46 @@ function List() {
     setLoading(false);
   }
 
-  const dynamicSort = (rank) => {
-    return function (a, b) {
-      if (a[rank] < b[rank]) {
-        return -1;
-      }
-      if (a[rank] > b[rank]) {
-        return 1;
-      }
-      return 0;
-    };
-  };
+  // Sort function
+  function filterAnime(filter) {
+    switch (filter) {
+      case "popularity":
+        return setAnimes(
+          animes.slice().sort((a, b) => a.popularity - b.popularity)
+        );
 
-  // Apply sorting when 'sort' state changes
-  useEffect(() => {
-    if (sort) {
-      const sortedData = animes.sort(dynamicSort(sort));
-      setAnimes(sortedData);
+      case "episode":
+        return setAnimes(
+          animes.slice().sort((a, b) => a.episodes - b.episodes)
+        );
+
+      case "rank":
+        return setAnimes(animes.slice().sort((a, b) => a.rank - b.rank));
     }
-  }, [sort]);
+  }
 
-  // If ya want longer one
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //       setLoading(true)
-  //     )})
-  //   }, 2000)
+  // Search event handler
+  const eventSearch = (event) => {
+    const { value } = event.target;
+    setQuery(value);
+
+    // Filter anime search
+    const filteredAnime = animes.filter((anime) =>
+    anime.title.toLowerCase().includes(value.toLowerCase())
+    );
+
+    
+    setFilteredAnimeList(filteredAnime);
+    setIsEmpty(value === '')
+  };
+  
+  // If entered anime name (like bro, my search thing already filtered it out, just click the damn ima- sorry)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (query.toLowerCase() !== filteredAnimeList) {
+      navigate("/error");
+    }
+  }
 
   useEffect(() => {
     fetchAnime();
@@ -66,13 +75,15 @@ function List() {
               <h1 className="nav__title">Akneemei</h1>
             </button>
             <div className="header__search-bar--wrapper">
-              <form className="search-bar--input">
+              <form className="search-bar--input" onSubmit={handleSubmit}>
                 <input
                   type="text"
                   placeholder="Search to your desires, have fun bingin!"
+                  value={query}
+                  onChange={eventSearch}
                   className="transition"
                 />
-                <button className="search__btn">
+                <button className="search__btn" type="submit">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -103,12 +114,12 @@ function List() {
                     id="sort"
                     className="transition"
                     defaultValue={"sort"}
-                    onChange={handleSortChange}
+                    onChange={(e) => filterAnime(e.target.value)}
                   >
                     <option value="sort" disabled>
                       sort
                     </option>
-                    <option value="score">Low to high scores</option>
+                    <option value="popularity">Most popular</option>
                     <option value="episode">Most episodes</option>
                     <option value="rank">Ranking</option>
                   </select>
@@ -119,7 +130,33 @@ function List() {
               <div className="container">
                 <div className="wrapper">
                   {!loading
-                    ? animes.map((anime) => (
+                    ? isEmpty ?
+                    animes.map((anime) => (
+                        <div className="another-wrapper" key={anime.rank}>
+                          <div
+                            className="content__img--wrapper transition"
+                            onClick={() =>
+                              navigate(`/animelist/${anime.mal_id}`)
+                            }
+                          >
+                            <img
+                              src={anime.images.jpg.image_url}
+                              alt="rawr"
+                              className="content__img"
+                            />
+                            <div className="content">
+                              <h2 className="content__title transition">
+                                {anime.title}
+                              </h2>
+                              <div className="content__ranking">
+                                Rank: {anime.rank}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                      :
+                      filteredAnimeList.map((anime) => (
                         <div className="another-wrapper" key={anime.rank}>
                           <div
                             className="content__img--wrapper transition"
