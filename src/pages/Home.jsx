@@ -37,13 +37,13 @@ function Home() {
     <>
       <section id="background">
         <main id="nav__bar" className="transition">
-          <nav>
+          <nav className="home__nav">
             <button
               className="nav__logo--wrapper"
               onClick={() => navigate("/")}
             >
               <img src={images} alt="fan" id="nav__logo" />
-              <h1>Akneemei</h1>
+              <h1 className="home__header">Akneemei</h1>
             </button>
             <div className="header__search-bar--wrapper">
               <form

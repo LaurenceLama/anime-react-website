@@ -1,13 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Kulim+Park:wght@300;400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Kulim Park", sans-serif;
-}
-
 /*
 
 GENERICS
@@ -75,28 +68,10 @@ Navigationalitisizeracecars
   width: 100%;
 }
 
-.list__nav {
-  width: 100%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  padding: 20px 40px;
-  border-bottom: 4px solid white;
-  border-radius: 30%;
-}
-
 .nav__logo--anchor {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-#nav__logo {
-  max-width: 140px;
-  transform: scale(0.8);
-  border-radius: 50%;
 }
 
 input,
@@ -193,6 +168,12 @@ Animes, the main attraction, this it
   padding: 0 200px;
   display: flex;
   justify-content: space-around;
+}
+
+.sort__filter--wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .sort__result--title {
@@ -313,14 +294,10 @@ RESPONSIVILINESS
 }
 
 @media (max-width: 768px) {
-  .header__search-bar--wrapper {
-    max-width: 260px;
-  }
-
   .result__title--wrapper {
     padding: 0;
   }
-
+  
   .search__result--title,
   .sort__result--title {
     font-size: 36px;
@@ -332,14 +309,8 @@ RESPONSIVILINESS
     margin: 0 20px;
   }
 
-  input,
-  button,
   .search__result--title {
     display: none;
-  }
-
-  .nav__logo--anchor {
-    margin-left: 30%;
   }
 
   .another-wrapper {
