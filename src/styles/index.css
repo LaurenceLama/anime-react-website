@@ -57,6 +57,18 @@ li {
   transition: all 250ms ease-in-out;
 }
 
+.error {
+  padding: 100px 0;
+  font-size: 200px;
+}
+
+.error_hover:hover u {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: rgb(99, 150, 218);
+  color: black;
+}
+
 /* 
 
 Navigationalitisizeracecars
@@ -258,6 +270,10 @@ RESPONSIVILINESS
 @media (max-width: 730px) {
   input {
     max-width: 300px;
+  }
+
+  .error {
+  font-size: 100px;
   }
 }
 
