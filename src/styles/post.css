@@ -58,6 +58,56 @@ h1 {
   font-weight: bold;
 }
 
+/* 
+
+Navigationalitisizeracecars
+
+*/
+
+#nav__bar {
+  display: flex;
+  width: 100%;
+}
+
+nav {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px 40px;
+  border-bottom: 4px solid white;
+  border-radius: 30%;
+}
+
+.post__back--text {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgb(99, 150, 218);
+}
+
+.post__back,
+.post__back--phone {
+  border: 2px solid;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.post__back:hover {
+  transform: scale(1.2);
+  border: 2px double rgb(99, 150, 218);
+}
+
+.post__back:hover .post__back--text {
+  color: white;
+}
+
+.arrow__hover--effect {
+  width: 100%;
+}
+
+
 /*
 
 DESCRIPTIONISMS
@@ -201,5 +251,9 @@ RESPONSIVILINESS
 @media (max-width: 480px) {
   .post__wrapper {
     margin-bottom: 8px;
+  }
+
+  #anime__post--img {
+    min-width: 300px;
   }
 }
