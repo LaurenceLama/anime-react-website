@@ -1,4 +1,3 @@
-import "../styles/index.css";
 import images from "../assets/images.jpg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +58,7 @@ function Home() {
                 />
                 <button className="search__btn" type="submit">
                   {!loading ? (
-                  <svg
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -73,14 +72,48 @@ function Home() {
                         d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                       />
                     </svg>
-                    ) : (
-                      <FontAwesomeIcon icon={faFan} size="xl" spin spinReverse />
+                  ) : (
+                    <FontAwesomeIcon icon={faFan} size="xl" spin spinReverse />
                   )}
                 </button>
               </form>
             </div>
           </nav>
         </main>
+        <div className="landing">
+          <form
+            className="landing__search-bar transition"
+            onSubmit={handleSubmit}
+          >
+            <input
+              type="text"
+              value={query}
+              onChange={handleChange}
+              placeholder="Type 'anime' here"
+              className="search--bar transition"
+            />
+            <button className="search__btn" type="submit">
+              {!loading ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+              ) : (
+                <FontAwesomeIcon icon={faFan} size="xl" spin spinReverse />
+              )}
+            </button>
+          </form>
+        </div>
       </section>
     </>
   );

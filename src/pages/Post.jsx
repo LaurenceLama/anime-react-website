@@ -20,23 +20,24 @@ function Post() {
   }, []);
 
   // could not fetch after .images.jpg
-  console.log(posts?.images?.jpg?.image_url)
+  console.log(posts?.images?.jpg?.image_url);
 
   return (
     <div className="gray__landing-page">
-      <section id="nav__bar">
+      <section id="nav__bar" className="margin__cancel">
         <nav>
           <button onClick={() => navigate("/")} className="nav__logo--anchor">
             <img src={images} alt="" id="nav__logo" />
             <h1 className="nav__title">Akneemei</h1>
           </button>
-          <div className="post__back transition">
-            <button onClick={() => navigate("/animelist")}>
-              <button className="post__back--text">
-                <span className="arrow__hover--effect">←</span> Back
-              </button>
+          <button
+            onClick={() => navigate("/animelist")}
+            className="post__back transition"
+          >
+            <button className="post__back--text transition">
+              <span className="arrow__hover--effect transition">←</span> Back
             </button>
-          </div>
+          </button>
         </nav>
       </section>
       <section id="description">
@@ -60,6 +61,15 @@ function Post() {
               <span className="color-blue">Background story:</span>{" "}
               {posts.synopsis}
             </h3>
+            <div
+              className="post__back--phone transition"
+              onClick={() => navigate("/animelist")}
+            >
+              <button className="post__back--text transition">
+                <span className="arrow__hover--effect transition">←</span>{" "}
+                <span className="blue transition">Back</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>

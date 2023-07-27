@@ -30,8 +30,8 @@ function List() {
 
       case "episode":
         return setAnimes(
-          animes.slice().sort((a, b) => a.episodes - b.episodes)
-        );
+          animes.slice().sort((a, b) => b.episodes - a.episodes)
+        ); //based on data, apparently one piece be at the bottom bruv
 
       case "rank":
         return setAnimes(animes.slice().sort((a, b) => a.rank - b.rank));
